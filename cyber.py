@@ -32,6 +32,3 @@ if ( seçim==2 ):
   os.system("git clone https://github.com/FaridDadashzade/cyberdata && clear && cd cyberdata && pip install -r requirements.txt && python pyrogram.py")
 else:
 	os.system("clear && cd cyberdata && pip install -r requirements.txt && python telethon.py")
-	
-if ( seçim != (1,2):
-    print("Yanlış seçim.")
