@@ -24,10 +24,14 @@ print(ağ + "1. Telethon\n2. Pyrogram")
 seçim = int(input(ağ + "\nBir seçim edin: "))
 
 if ( seçim==1 ):
-  os.system("git clone https://github.com/FaridDadashzade/cyberdata && cd cyberdata && pip install -r requirements.txt && python telethon.py")
+  os.system("git clone https://github.com/FaridDadashzade/cyberdata && clear && cd cyberdata && pip install -r requirements.txt && python telethon.py")
+else:
+	os.system("clear && cd cyberdata && pip install -r requirements.txt && python telethon.py")
 
 if ( seçim==2 ):
-  os.system("git clone https://github.com/FaridDadashzade/cyberdata && cd cyberdata && pip install -r requirements.txt && python pyrogram.py")
-  
+  os.system("git clone https://github.com/FaridDadashzade/cyberdata && clear && cd cyberdata && pip install -r requirements.txt && python pyrogram.py")
 else:
-	print("\nYanlış seçim...")
+	os.system("clear && cd cyberdata && pip install -r requirements.txt && python telethon.py")
+	
+if ( seçim != (1,2):
+    print("Yanlış seçim.")
