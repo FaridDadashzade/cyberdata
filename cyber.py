@@ -1,34 +1,61 @@
-import os
+import time
+from telethon.sync import TelegramClient
+from telethon.sessions import StringSession
+from pyrogram import Client
 
-os.system("clear")
+cyberlogo = """
 
-yaşıl = '\033[92m'
-qırmızı = '\033[91m'
-ağ = '\033[37m'
-sarı = '\033[93m'
-logo = """
 ░█████╗░██╗░░░██╗██████╗░███████╗██████╗░
 ██╔══██╗╚██╗░██╔╝██╔══██╗██╔════╝██╔══██╗
 ██║░░╚═╝░╚████╔╝░██████╦╝█████╗░░██████╔╝
 ██║░░██╗░░╚██╔╝░░██╔══██╗██╔══╝░░██╔══██╗
 ╚█████╔╝░░░██║░░░██████╦╝███████╗██║░░██║
 ░╚════╝░░░░╚═╝░░░╚═════╝░╚══════╝╚═╝░░╚═╝
+
+C Y B Ξ R String Session Generator
 """
 
-print(qırmızı + logo)
+template = """
+C Y B Ξ R String Generator: @TheCyberUserBot
+            
+<code>String:</code>: <code>{}</code>
+⚠️ <b>Xahiş edirik bu kodu güvənmədiyiniz insanlarla paylaşmayın.</b>"""
 
-print(yaşıl + """C Y B Ξ R String Session Generator""")
+select = " "
 
-print(ağ + "1. Telethon\n2. Pyrogram")
+print(cyberlogo)
 
-seçim = int(input(ağ + "\nBir seçim edin: "))
+while select != ("1", "2"):
+    select = input("1. Telethon\n2. Pyrogram\n\nXahiş edirəm bir seçim edin: ").lower()
+    if select == "1":
+        print("""\nTelethon seçildi.\nScript işə salınır...""")
+        time.sleep(1)
+        API_KEY = int(input("API_KEY daxil edin: "))
+        API_HASH = input("API_HASH daxil edin: ")
 
-if ( seçim==1 ):
-  os.system("git clone https://github.com/FaridDadashzade/cyberdata && clear && cd cyberdata && pip install -r requirements.txt && python telethon.py")
-else:
-	os.system("clear && cd cyberdata && pip install -r requirements.txt && python telethon.py")
+        with TelegramClient(StringSession(), API_KEY, API_HASH) as client:
+            session_string = client.session.save()
+            saved_messages_template = "Telethon String" + template.format(session_string)
+            print("\nString Session yaradılır...\n")
+            client.send_message("me", saved_messages_template, parse_mode="html")
+            time.sleep(1)
+            print("String Session kayıtlı mesajlarınıza qeyd edildi.")
+        break
 
-if ( seçim==2 ):
-  os.system("git clone https://github.com/FaridDadashzade/cyberdata && clear && cd cyberdata && pip install -r requirements.txt && python pyrogram.py")
-else:
-	os.system("clear && cd cyberdata && pip install -r requirements.txt && python telethon.py")
+    elif select == "2":
+        print("""\nPyrogram seçildi.\nScript işə salınır...""")
+        time.sleep(1)
+        with Client(
+        "CyberUserBot", 
+        api_id=int(input("API_ID daxil edin: ")),
+        api_hash=input("API_HASH daxil edin: ")) as pyrogram:
+            saved_messages_template = "Pyrogram String" + template.format(pyrogram.export_session_string())
+            print("\nString Session yaradılır...\n")           
+            pyrogram.send_message("me", saved_messages_template, parse_mode="html")
+            time.sleep(1) 
+            print("String Session kayıtlı mesajlarınıza qeyd edildi.")
+        break
+    
+    else:
+        print("\nXahiş edirəm sadəcə 1 və ya 2 yazın.\n")
+        time.sleep(1.5)
