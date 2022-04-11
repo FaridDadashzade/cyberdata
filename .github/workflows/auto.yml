@@ -22,7 +22,7 @@ jobs:
       - name: Modify last update
         run: |
           cat > README.MD
-          d=`date '%d-%m-%Y'`
+          d=`date '+%Y-%m-%dT%H:%M:%SZ'`
           echo $d > README.MD
           
       - name: Commit changes
