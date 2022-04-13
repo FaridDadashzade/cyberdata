@@ -1,4 +1,4 @@
-name: Auto Commit
+name: Auto commit
 
 on:
 
@@ -12,7 +12,7 @@ on:
 
   schedule:
 
-  - cron: "0 7,8 * * *"
+  - cron: "0 7,9,11 * * 1,3"
 
 jobs:
 
@@ -34,8 +34,8 @@ jobs:
 
         run: |
 
-          cat > README.MD
           d=`date '+%Y-%m-%dT%H:%M:%SZ'`
+
           echo $d > README.MD
 
           
@@ -50,7 +50,35 @@ jobs:
 
           git add -A
 
-          git commit -m "✅"
+          
+
+          arr[0]="😂 auto commit"
+
+          arr[1]="😱 auto commit"
+
+          arr[2]="👿 auto commit"
+
+          arr[3]="💩 auto commit"
+
+          arr[4]="🙏 auto commit"
+
+          arr[5]="🙈 auto commit"
+
+          arr[6]="🐐 auto commit"
+
+          arr[7]="🤖 auto commit"
+
+          arr[8]="🟩 auto commit"
+
+          arr[9]="👻 auto commit"
+
+          
+
+          rand=$[$RANDOM % ${#arr[@]}]
+
+          
+
+          git commit -m "${arr[$rand]}"
 
           
 
