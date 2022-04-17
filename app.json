@@ -1,0 +1,46 @@
+{
+  "name": "test",
+  "description": "test",
+  "logo": "",
+  "keywords": [
+    "telegram",
+    "bot",
+    "python",
+    "pyrogram"
+  ],
+    "buildpacks": [{
+    "url": "heroku/python"
+  }],
+  "formation": {
+    "worker": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+  "addons": [
+      {
+         "options": {
+            "version": "12"
+         },
+         "plan": "heroku-postgresql"
+      }
+   ],
+  "repository": "",
+  "env": {
+    "API_ID": {
+      "description": "test.",
+      "required": true,
+      "value": ""
+    },
+    "API_HASH": {
+      "description": "test.",
+      "required": true,
+      "value": ""
+    },
+    "BOT_TOKEN": {
+      "description": "test",
+      "required": true,
+      "value": ""
+    }
+  }
+}
